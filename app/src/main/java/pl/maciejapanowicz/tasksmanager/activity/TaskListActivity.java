@@ -2,6 +2,7 @@ package pl.maciejapanowicz.tasksmanager.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.Toolbar;
 
 public class TaskListActivity extends Activity {
 
@@ -9,5 +10,6 @@ public class TaskListActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_list);
+        setActionBar((Toolbar) findViewById(R.id.toolbar));
     }
 }
