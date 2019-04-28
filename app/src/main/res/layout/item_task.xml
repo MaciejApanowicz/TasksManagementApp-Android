@@ -10,7 +10,8 @@
     android:layout_marginEnd="@dimen/gutter"
     android:layout_marginTop="@dimen/item_task_half_space"
     android:layout_marginBottom="@dimen/item_task_half_space"
-    android:elevation="@dimen/item_task_elevation">
+    android:elevation="@dimen/item_task_elevation"
+    android:foreground="?android:attr/selectableItemBackground">
 
 
     <RelativeLayout
