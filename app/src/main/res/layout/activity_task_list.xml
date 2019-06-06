@@ -18,9 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:name="pl.maciejapanowicz.tasksmanager.fragment.TaskListFragment"
-        android:id="@+id/fragment"
-        >
-
+        android:id="@+id/fragment">
     </fragment>
 
 </LinearLayout>
