@@ -2,11 +2,14 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <color name="primary">#00967F</color>
+    <color name="primary_dark">#004E42</color>
+    <color name="window_background">#306947</color>
 
     <style name="AppTheme"
         parent="android:Theme.Material.NoActionBar">
         <item name="android:colorPrimary">@color/primary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:colorPrimaryDark">@color/primary_dark</item>
+        <item name="android:windowBackground">@color/window_background</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
