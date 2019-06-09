@@ -1,9 +1,10 @@
 package pl.maciejapanowicz.tasksmanager.activity;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 
-public class TaskEditActivity extends AppCompatActivity {
+public class TaskEditActivity extends Activity {
+    public static final String EXTRA_TASKID = "taskId";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -5,16 +5,18 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import pl.maciejapanowicz.tasksmanager.activity.R;
-
+import pl.maciejapanowicz.tasksmanager.interfaces.OnTaskEdit;
 
 public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHolder> {
 
-    static String[] sampleData = new String[]{
+    private static final String downloadPicturesFromThisUrl = "http://lorempixel.com/600/400/city/?fakeId";
+    private static String[] sampleData = new String[]{
             "first task",
             "second task",
             "third task",
@@ -32,12 +34,22 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        Context context = viewHolder.titleView.getContext();
-        viewHolder.titleView.setText(sampleData[i]);
+    public void onBindViewHolder(ViewHolder viewHolder, final int taskID) {
+        final Context context = viewHolder.titleView.getContext();
+
+        viewHolder.titleView.setText(sampleData[taskID]);
         Picasso.with(context)
-                .load("http://lorempixel.com/600/400/city/?fakeId")
+                .load(downloadPicturesFromThisUrl)
                 .into(viewHolder.imageView);
+
+        viewHolder.cardView.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        ((OnTaskEdit) context).editTask(taskID);
+                    }
+                }
+        );
     }
 
     @Override
