@@ -17,7 +17,6 @@ public class TaskListFragment extends Fragment {
     TaskListAdapter adapter;
 
     public TaskListFragment() {
-        // Required empty public constructor
     }
 
 

@@ -57,6 +57,9 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
         return sampleData.length;
     }
 
+    public static String downloadPicturesForThisTask (int taskId) {
+        return "http://lorempixel.com/600/400/city/?fakeId=" + taskId;
+    }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         CardView cardView;
