@@ -2,9 +2,9 @@ package pl.maciejapanowicz.tasksmanager.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-
+import android.app.Fragment;
 import pl.maciejapanowicz.tasksmanager.fragment.TaskEditFragment;
+
 
 public class TaskEditActivity extends Activity {
     public static final String EXTRA_TASKID = "taskId";
@@ -23,4 +23,5 @@ public class TaskEditActivity extends Activity {
                     fragmentTag).commit();
         }
     }
+
 }

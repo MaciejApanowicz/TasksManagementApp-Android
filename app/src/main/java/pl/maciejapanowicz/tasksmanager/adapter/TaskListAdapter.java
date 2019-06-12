@@ -58,7 +58,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
     }
 
     public static String downloadPicturesForThisTask (int taskId) {
-        return "http://lorempixel.com/600/400/city/?fakeId=" + taskId;
+        return downloadPicturesFromThisUrl+"="+taskId;
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -66,7 +66,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
         TextView titleView;
         ImageView imageView;
 
-        public ViewHolder(CardView singleCard) {
+        private ViewHolder(CardView singleCard) {
             super(singleCard);
             cardView = singleCard;
             titleView = (TextView) singleCard.findViewById(R.id.title);

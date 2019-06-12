@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toolbar;
-
 import pl.maciejapanowicz.tasksmanager.interfaces.OnTaskEdit;
+
 
 public class TaskListActivity extends Activity implements OnTaskEdit {
 
@@ -21,4 +21,5 @@ public class TaskListActivity extends Activity implements OnTaskEdit {
         startActivity(new Intent(this, TaskEditActivity.class)
         .putExtra(TaskEditActivity.EXTRA_TASKID, id));
     }
+
 }
