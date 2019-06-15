@@ -34,10 +34,10 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, final int taskID) {
+    public void onBindViewHolder(final ViewHolder viewHolder, int taskIndex) {
         final Context context = viewHolder.titleView.getContext();
 
-        viewHolder.titleView.setText(sampleData[taskID]);
+        viewHolder.titleView.setText(sampleData[taskIndex]);
         Picasso.with(context)
                 .load(downloadPicturesFromThisUrl)
                 .into(viewHolder.imageView);
@@ -46,7 +46,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        ((OnTaskEdit) context).editTask(taskID);
+                        ((OnTaskEdit) context).editTask(viewHolder.getAdapterPosition());
                     }
                 }
         );
