@@ -1,39 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <ImageView
             android:id="@+id/task_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="?android:actionBarSize"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/task_title"
-            />
+            android:layout_alignParentTop="true"
+            android:adjustViewBounds="true"
+             />
 
         <EditText
             android:id="@+id/task_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/task_image"
+            android:layout_below="@id/task_image"
             android:hint="@string/title"/>
 
         <EditText
-            android:id="@+id/notes"
+            android:id="@+id/task_notes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@id/task_title"
-            android:minLines="3"
-            android:hint="@string/notes"
-            app:layout_constraintTop_toBottomOf="@+id/task_title"
-            />
+            android:layout_marginStart="@dimen/gutter"
+            android:layout_marginEnd="@dimen/gutter"
+
+
+        />
     </RelativeLayout>
 
 </ScrollView>

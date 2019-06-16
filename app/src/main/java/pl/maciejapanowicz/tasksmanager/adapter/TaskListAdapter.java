@@ -38,7 +38,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
     public void onBindViewHolder(final ViewHolder viewHolder, int taskIndex) {
         final Context context = viewHolder.titleView.getContext();
 
-        viewHolder.titleView.setText(sampleData[taskIndex]);
+       viewHolder.titleView.setText(sampleData[taskIndex]);
         Picasso.with(context)
                 .load(downloadPicturesFromThisUrl+taskIndex+imagesSize)
                 .into(viewHolder.imageView);

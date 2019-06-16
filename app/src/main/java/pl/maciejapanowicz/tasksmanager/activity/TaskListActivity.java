@@ -17,9 +17,9 @@ public class TaskListActivity extends Activity implements OnTaskEdit {
     }
 
     @Override
-    public void editTask(long id) {
+    public void editTask(long taskId) {
         startActivity(new Intent(this, TaskEditActivity.class)
-        .putExtra(TaskEditActivity.EXTRA_TASKID, id));
+        .putExtra(TaskEditActivity.EXTRA_TASKID, taskId));
     }
 
 }
