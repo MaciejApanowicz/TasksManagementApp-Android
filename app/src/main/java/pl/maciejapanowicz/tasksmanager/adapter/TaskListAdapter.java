@@ -15,7 +15,8 @@ import pl.maciejapanowicz.tasksmanager.interfaces.OnTaskEdit;
 
 public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHolder> {
 
-    private static final String downloadPicturesFromThisUrl = "http://lorempixel.com/600/400/city/?fakeId";
+    private static final String downloadPicturesFromThisUrl = "https://picsum.photos/id/";
+    private static final String imagesSize = "/200/200";
     private static String[] sampleData = new String[]{
             "first task",
             "second task",
@@ -39,7 +40,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
 
         viewHolder.titleView.setText(sampleData[taskIndex]);
         Picasso.with(context)
-                .load(downloadPicturesFromThisUrl)
+                .load(downloadPicturesFromThisUrl+taskIndex+imagesSize)
                 .into(viewHolder.imageView);
 
         viewHolder.cardView.setOnClickListener(
@@ -57,8 +58,8 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
         return sampleData.length;
     }
 
-    public static String downloadPicturesForThisTask (int taskId) {
-        return downloadPicturesFromThisUrl+"="+taskId;
+    public static String downloadPicturesForThisTask (int taskIdNumber) {
+        return downloadPicturesFromThisUrl+taskIdNumber+imagesSize;
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
