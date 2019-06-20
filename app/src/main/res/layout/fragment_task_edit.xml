@@ -16,8 +16,7 @@
             android:layout_height="wrap_content"
             android:minHeight="?android:actionBarSize"
             android:layout_alignParentTop="true"
-            android:adjustViewBounds="true"
-             />
+            android:adjustViewBounds="true" />
 
         <EditText
             android:id="@+id/task_title"
@@ -28,6 +27,26 @@
             android:layout_marginLeft="@dimen/gutter"
             android:hint="@string/title"/>
 
+        <TextView
+            style="@android:style/TextAppearance.Medium"
+            android:id="@+id/task_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/task_title"
+            android:layout_alignEnd="@id/task_title"
+            android:layout_marginEnd="@dimen/item_task_half_space"
+            />
+
+        <TextView
+            style="@android:style/TextAppearance.Medium"
+            android:id="@+id/task_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/task_time"
+            android:layout_alignBottom="@id/task_time"
+            android:layout_marginEnd="@dimen/item_task_elevation"/>
+
+
         <EditText
             android:id="@+id/task_notes"
             android:layout_width="match_parent"
@@ -35,8 +54,10 @@
             android:minLines="3"
             android:layout_marginEnd="@dimen/gutter"
             android:layout_alignStart="@id/task_title"
-            android:layout_below="@id/task_title"
+            android:layout_below="@id/task_time"
             android:hint="@string/notes" />
+
+
 
     </RelativeLayout>
 
