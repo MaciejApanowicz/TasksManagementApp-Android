@@ -1,6 +1,5 @@
 package pl.maciejapanowicz.tasksmanager.fragment;
 
-
 import android.os.Bundle;
 
 import android.app.Fragment;
@@ -18,8 +17,8 @@ import pl.maciejapanowicz.tasksmanager.adapter.TaskListAdapter;
 public class TaskEditFragment extends Fragment {
 
     public static final String TASK_EDIT_FRAGMENT_TAG = "taskEditFragment";
-    private int taskIdNumber;
-    private String TASK_ID_NUMBER = "taskIdNumber";
+    long taskIdNumber;
+    private String TASK_ID = "taskIdNumber";
     View rootView;
     EditText titleText;
     EditText notesText;
@@ -32,17 +31,21 @@ public class TaskEditFragment extends Fragment {
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Bundle data = getArguments();
-        if (savedInstanceState != null) {
-            assert data != null;
-            taskIdNumber = data.getInt(TASK_ID_NUMBER);
+        Bundle arguments = getArguments();
+        if (arguments != null){
+            taskIdNumber = arguments.getLong(TaskEditActivity.EXTRA_TASKID, 0L);
         }
+
+        if (savedInstanceState != null) {
+            taskIdNumber = savedInstanceState.getLong(TASK_ID);
+        }
+
     }
 
     @Override
     public void onSaveInstanceState (Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt(TASK_ID_NUMBER, taskIdNumber);
+        outState.putLong(TASK_ID, taskIdNumber);
     }
 
     @Override
@@ -51,8 +54,9 @@ public class TaskEditFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_task_edit, container, false);
         rootView = view.getRootView();
+
         titleText = view.findViewById(R.id.task_title);
-        notesText = view.findViewById(R.id.notes);
+        notesText = view.findViewById(R.id.task_notes);
         imageView = view.findViewById(R.id.task_image);
         Picasso.with(getActivity())
                 .load(TaskListAdapter.downloadPicturesForThisTask(taskIdNumber))
@@ -60,10 +64,10 @@ public class TaskEditFragment extends Fragment {
         return view;
     }
 
-    public static TaskEditFragment getInstance(int taskIdNumber){
+    public static TaskEditFragment getInstance(long taskIdNumber){
         TaskEditFragment taskEditFragment = new TaskEditFragment();
         Bundle data = new Bundle();
-        data.putInt(TaskEditActivity.EXTRA_TASKID, taskIdNumber);
+        data.putLong(TaskEditActivity.EXTRA_TASKID, taskIdNumber);
         taskEditFragment.setArguments(data);
         return taskEditFragment;
     }

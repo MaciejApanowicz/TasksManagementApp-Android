@@ -58,7 +58,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
         return sampleData.length;
     }
 
-    public static String downloadPicturesForThisTask (int taskIdNumber) {
+    public static String downloadPicturesForThisTask (long taskIdNumber) {
         return downloadPicturesFromThisUrl+taskIdNumber+imagesSize;
     }
 

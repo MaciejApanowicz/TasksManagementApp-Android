@@ -17,7 +17,7 @@ public class TaskEditActivity extends Activity {
         setContentView(R.layout.activity_task_edit);
         setActionBar((Toolbar) findViewById(R.id.toolbar));
 
-        int taskID = getIntent().getIntExtra(TaskEditActivity.EXTRA_TASKID,0);
+        long taskID = getIntent().getLongExtra(TaskEditActivity.EXTRA_TASKID, 0);
         Fragment fragment = TaskEditFragment.getInstance(taskID);
         String fragmentTag = TaskEditFragment.TASK_EDIT_FRAGMENT_TAG;
         if (savedInstanceState == null){
