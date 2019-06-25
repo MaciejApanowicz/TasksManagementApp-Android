@@ -17,29 +17,32 @@ import pl.maciejapanowicz.tasksmanager.adapter.TaskListAdapter;
 public class TaskEditFragment extends Fragment {
 
     public static final String TASK_EDIT_FRAGMENT_TAG = "taskEditFragment";
-    long taskIdNumber;
-    private String TASK_ID = "taskIdNumber";
+    public String TASK_ID = "taskId";
+
+    public static TaskEditFragment newInstance(long taskIdNumber){
+        TaskEditFragment fragment = new TaskEditFragment();
+        Bundle data = new Bundle();
+        data.putLong(TaskEditActivity.EXTRA_TASKID, taskIdNumber);
+        fragment.setArguments(data);
+        return fragment;
+    }
+
     View rootView;
     EditText titleText;
     EditText notesText;
     ImageView imageView;
 
-    public TaskEditFragment() {
-    }
+    long taskIdNumber;
 
     @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Bundle arguments = getArguments();
-        if (arguments != null){
-            taskIdNumber = arguments.getLong(TaskEditActivity.EXTRA_TASKID, 0L);
-        }
-
+        taskIdNumber = arguments.getLong(TaskEditActivity.EXTRA_TASKID);
         if (savedInstanceState != null) {
             taskIdNumber = savedInstanceState.getLong(TASK_ID);
         }
-
     }
 
     @Override
@@ -64,12 +67,5 @@ public class TaskEditFragment extends Fragment {
         return view;
     }
 
-    public static TaskEditFragment getInstance(long taskIdNumber){
-        TaskEditFragment taskEditFragment = new TaskEditFragment();
-        Bundle data = new Bundle();
-        data.putLong(TaskEditActivity.EXTRA_TASKID, taskIdNumber);
-        taskEditFragment.setArguments(data);
-        return taskEditFragment;
-    }
 
 }

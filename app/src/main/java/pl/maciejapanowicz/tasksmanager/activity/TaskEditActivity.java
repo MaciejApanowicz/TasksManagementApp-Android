@@ -18,7 +18,8 @@ public class TaskEditActivity extends Activity {
         setActionBar((Toolbar) findViewById(R.id.toolbar));
 
         long taskID = getIntent().getLongExtra(TaskEditActivity.EXTRA_TASKID, 0);
-        Fragment fragment = TaskEditFragment.getInstance(taskID);
+        System.out.println(taskID);
+        Fragment fragment = TaskEditFragment.newInstance(taskID);
         String fragmentTag = TaskEditFragment.TASK_EDIT_FRAGMENT_TAG;
         if (savedInstanceState == null){
             getFragmentManager().beginTransaction().add(

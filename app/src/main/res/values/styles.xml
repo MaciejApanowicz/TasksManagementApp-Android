@@ -13,4 +13,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.TaskEditTheme" parent="AppTheme">
+        <item name="android:windowTranslucentStatus">true</item>>
+        <item name="android:windowActionBarOverlay">true</item>>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:actionBarStyle">@style/TaskEditTheme</item>
+    </style>
+
+    <style name="TaskEditTheme" parent="android:Theme.Material">
+    <item name="android:background">@android:color/transparent</item>
+    </style>>
+
 </resources>
