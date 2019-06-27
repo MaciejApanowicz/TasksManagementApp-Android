@@ -7,10 +7,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import pl.maciejapanowicz.tasksmanager.activity.R;
 import pl.maciejapanowicz.tasksmanager.adapter.TaskListAdapter;
+import pl.maciejapanowicz.tasksmanager.interfaces.OnTaskEdit;
 
 
 public class TaskListFragment extends Fragment {
@@ -51,4 +53,14 @@ public class TaskListFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.menu_list, menu);
     }
+
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item){
+        if (item.getItemId() == R.id.menu_insert ){
+            ((OnTaskEdit) getActivity()).editTask(0);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }
