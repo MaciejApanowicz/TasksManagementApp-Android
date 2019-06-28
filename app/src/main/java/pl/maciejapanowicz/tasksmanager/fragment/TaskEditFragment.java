@@ -4,6 +4,9 @@ import android.os.Bundle;
 
 import android.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -18,6 +21,13 @@ public class TaskEditFragment extends Fragment {
 
     public static final String TASK_EDIT_FRAGMENT_TAG = "taskEditFragment";
     public String TASK_ID = "taskId";
+    private static final int MENU_SAVE = 1;
+
+    View rootView;
+    EditText titleText;
+    EditText notesText;
+    ImageView imageView;
+    long taskIdNumber;
 
     public static TaskEditFragment newInstance(long taskIdNumber){
         TaskEditFragment fragment = new TaskEditFragment();
@@ -26,13 +36,6 @@ public class TaskEditFragment extends Fragment {
         fragment.setArguments(data);
         return fragment;
     }
-
-    View rootView;
-    EditText titleText;
-    EditText notesText;
-    ImageView imageView;
-
-    long taskIdNumber;
 
     @Override
     public void onCreate (Bundle savedInstanceState) {
@@ -67,5 +70,17 @@ public class TaskEditFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onActivityCreated (Bundle savedInstanceState){
+        super.onActivityCreated(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
 
+    @Override
+    public void onCreateOptionsMenu (Menu menu, MenuInflater inflater){
+        super.onCreateOptionsMenu(menu, inflater);
+
+        menu.add(0, MENU_SAVE, 0, R.string.save)
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+    }
 }
