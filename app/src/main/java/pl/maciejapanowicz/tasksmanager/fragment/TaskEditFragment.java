@@ -15,6 +15,7 @@ import com.squareup.picasso.Picasso;
 import pl.maciejapanowicz.tasksmanager.activity.R;
 import pl.maciejapanowicz.tasksmanager.activity.TaskEditActivity;
 import pl.maciejapanowicz.tasksmanager.adapter.TaskListAdapter;
+import pl.maciejapanowicz.tasksmanager.interfaces.OnTaskEditFinished;
 
 
 public class TaskEditFragment extends Fragment {
@@ -82,5 +83,17 @@ public class TaskEditFragment extends Fragment {
 
         menu.add(0, MENU_SAVE, 0, R.string.save)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item){
+        switch (item.getItemId()){
+            case MENU_SAVE:
+                // TODO: 30.06.2019 create a saving method
+                ((OnTaskEditFinished) getActivity()).finishEditingTask();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

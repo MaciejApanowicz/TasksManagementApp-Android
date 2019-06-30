@@ -6,9 +6,10 @@ import android.app.Fragment;
 import android.widget.Toolbar;
 
 import pl.maciejapanowicz.tasksmanager.fragment.TaskEditFragment;
+import pl.maciejapanowicz.tasksmanager.interfaces.OnTaskEditFinished;
 
 
-public class TaskEditActivity extends Activity {
+public class TaskEditActivity extends Activity implements OnTaskEditFinished {
     public static final String EXTRA_TASKID = "taskId";
 
     @Override
@@ -29,4 +30,8 @@ public class TaskEditActivity extends Activity {
         }
     }
 
+    @Override
+    public void finishEditingTask() {
+        finish();
+    }
 }
