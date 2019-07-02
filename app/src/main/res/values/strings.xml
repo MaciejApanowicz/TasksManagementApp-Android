@@ -4,4 +4,6 @@
     <string name="notes">Notes</string>
     <string name="menu_insert">Add Task</string>
     <string name="save">Save</string>
+    <string name="delete_question">Delete?</string>
+    <string name="delete">Delete</string>
 </resources>
