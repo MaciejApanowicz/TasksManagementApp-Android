@@ -11,7 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+
 import com.squareup.picasso.Picasso;
+
+import java.text.DateFormat;
+import java.util.Calendar;
+
 import pl.maciejapanowicz.tasksmanager.activity.R;
 import pl.maciejapanowicz.tasksmanager.activity.TaskEditActivity;
 import pl.maciejapanowicz.tasksmanager.adapter.TaskListAdapter;
@@ -21,14 +27,18 @@ import pl.maciejapanowicz.tasksmanager.interfaces.OnTaskEditFinished;
 public class TaskEditFragment extends Fragment {
 
     public static final String TASK_EDIT_FRAGMENT_TAG = "taskEditFragment";
+    static final String TASK_DATE_AND_TIME = "taskDateAndTime";
     public String TASK_ID = "taskId";
     private static final int MENU_SAVE = 1;
 
     View rootView;
     EditText titleText;
+    TextView taskTime;
+    TextView taskDate;
     EditText notesText;
     ImageView imageView;
     long taskIdNumber;
+    Calendar taskDateAndTime;
 
     public static TaskEditFragment newInstance(long taskIdNumber){
         TaskEditFragment fragment = new TaskEditFragment();
@@ -46,13 +56,19 @@ public class TaskEditFragment extends Fragment {
         taskIdNumber = arguments.getLong(TaskEditActivity.EXTRA_TASKID);
         if (savedInstanceState != null) {
             taskIdNumber = savedInstanceState.getLong(TASK_ID);
+            taskDateAndTime = (Calendar) savedInstanceState.getSerializable(TASK_DATE_AND_TIME);
         }
+        if (taskDateAndTime == null){
+            taskDateAndTime = Calendar.getInstance();
+        }
+
     }
 
     @Override
     public void onSaveInstanceState (Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putLong(TASK_ID, taskIdNumber);
+        outState.putSerializable(TASK_DATE_AND_TIME, taskDateAndTime);
     }
 
     @Override
@@ -63,11 +79,14 @@ public class TaskEditFragment extends Fragment {
         rootView = view.getRootView();
 
         titleText = view.findViewById(R.id.task_title);
+        taskTime = view.findViewById(R.id.task_time);
+        taskDate = view.findViewById(R.id.task_date);
         notesText = view.findViewById(R.id.task_notes);
         imageView = view.findViewById(R.id.task_image);
         Picasso.with(getActivity())
                 .load(TaskListAdapter.downloadPicturesForThisTask(taskIdNumber))
                 .into(imageView);
+        updateDateAndTimeButtons();
         return view;
     }
 
@@ -96,4 +115,15 @@ public class TaskEditFragment extends Fragment {
 
         return super.onOptionsItemSelected(item);
     }
+
+    private void updateDateAndTimeButtons() {
+        DateFormat timeFormat = DateFormat.getTimeInstance(DateFormat.SHORT);
+        String timeForButton = timeFormat.format(taskDateAndTime.getTime());
+        taskTime.setText(timeForButton);
+        DateFormat dateFormat = DateFormat.getDateInstance();
+        String dateForButton = dateFormat.format(
+        taskDateAndTime.getTime());
+        taskDate.setText(dateForButton);
+    }
+
 }

@@ -60,7 +60,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
             public boolean onLongClick(View v) {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
                 alertDialogBuilder.setTitle(R.string.delete_question)
-                .setMessage("Are you sure")
+                .setMessage("Are you sure?")
                 .setCancelable(true)
                 .setNegativeButton(android.R.string.cancel, null)
                 .setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
@@ -86,6 +86,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
     }
 
     void deleteTask(Context context, long id ) {
+        //todo: create mechanism for deleting task
         Log.d("TaskListAdapter", "Called deleteTask" );
     }
 
