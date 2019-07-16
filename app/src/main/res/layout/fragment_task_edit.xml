@@ -30,12 +30,10 @@
         <TextView
             style="@android:style/TextAppearance.Medium"
             android:id="@+id/task_time"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/task_title"
-            android:layout_alignStart="@+id/task_title"
             android:layout_alignEnd="@id/task_title"
-            android:hint="choose time"
             android:layout_marginEnd="@dimen/gutter"/>
 
         <TextView
@@ -45,15 +43,8 @@
             android:layout_height="wrap_content"
             android:layout_toStartOf="@id/task_time"
             android:layout_alignBottom="@id/task_time"
-            android:layout_marginEnd="@dimen/item_task_elevation"/>
+            android:layout_marginEnd="@dimen/gutter"/>
 
-        <TextView android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/task_location"
-            android:layout_below="@id/task_time"
-            android:layout_marginEnd="3dp"
-            android:layout_alignEnd="@id/task_time"
-            style="@android:style/TextAppearance.Medium"/>
 
         <EditText
             android:id="@+id/task_notes"
@@ -62,10 +53,9 @@
             android:minLines="3"
             android:layout_marginEnd="@dimen/gutter"
             android:layout_alignStart="@id/task_title"
-            android:layout_below="@id/task_location"
+            android:layout_below="@id/task_date"
             android:hint="@string/notes"
             android:gravity="top" />
-
 
 
     </RelativeLayout>
