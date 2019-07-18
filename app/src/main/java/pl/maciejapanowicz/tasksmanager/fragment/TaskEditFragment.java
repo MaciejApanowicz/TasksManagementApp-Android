@@ -86,7 +86,7 @@ public class TaskEditFragment extends Fragment {
         Picasso.with(getActivity())
                 .load(TaskListAdapter.downloadPicturesForThisTask(taskIdNumber))
                 .into(imageView);
-        updateDateAndTimeButtons();
+        updateDateAndTime();
         return view;
     }
 
@@ -116,13 +116,12 @@ public class TaskEditFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    private void updateDateAndTimeButtons() {
+    private void updateDateAndTime() {
         DateFormat timeFormat = DateFormat.getTimeInstance(DateFormat.SHORT);
         String timeForButton = timeFormat.format(taskDateAndTime.getTime());
         taskTime.setText(timeForButton);
         DateFormat dateFormat = DateFormat.getDateInstance();
-        String dateForButton = dateFormat.format(
-        taskDateAndTime.getTime());
+        String dateForButton = dateFormat.format(taskDateAndTime.getTime());
         taskDate.setText(dateForButton);
     }
 
