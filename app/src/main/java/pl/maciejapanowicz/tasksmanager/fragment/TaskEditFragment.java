@@ -1,5 +1,8 @@
 package pl.maciejapanowicz.tasksmanager.fragment;
 
+import android.app.DatePickerDialog;
+import android.app.FragmentTransaction;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 
 import android.app.Fragment;
@@ -9,9 +12,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import com.squareup.picasso.Picasso;
 
@@ -24,7 +29,7 @@ import pl.maciejapanowicz.tasksmanager.adapter.TaskListAdapter;
 import pl.maciejapanowicz.tasksmanager.interfaces.OnTaskEditFinished;
 
 
-public class TaskEditFragment extends Fragment {
+public class TaskEditFragment extends Fragment implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     public static final String TASK_EDIT_FRAGMENT_TAG = "taskEditFragment";
     static final String TASK_DATE_AND_TIME = "taskDateAndTime";
@@ -87,21 +92,18 @@ public class TaskEditFragment extends Fragment {
                 .load(TaskListAdapter.downloadPicturesForThisTask(taskIdNumber))
                 .into(imageView);
         updateDateAndTime();
-
         taskDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: 19.07.2019 show a user the Date Picker, plus return the value that the user picks.
+                showDatePicker();
             }
         });
-
         taskTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: 19.07.2019 show a user the Time Picker, plus return the value that the user picks.
+                showTimePicker();
             }
         });
-
         return view;
     }
 
@@ -139,4 +141,30 @@ public class TaskEditFragment extends Fragment {
         taskDate.setText(dateForButton);
     }
 
+    private void showDatePicker () {
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        DatePickerFragment datePickerFragment = DatePickerFragment.newInstance(taskDateAndTime);
+        datePickerFragment.show(fragmentTransaction, "datePicker");
+    }
+
+    private void showTimePicker () {
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        TimePickerFragment timePickerFragment = TimePickerFragment.newInstance(taskDateAndTime);
+        timePickerFragment.show(fragmentTransaction, "timePicker");
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        taskDateAndTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        taskDateAndTime.set(Calendar.MONTH, month);
+        taskDateAndTime.set(Calendar.YEAR, year);
+        updateDateAndTime();
+    }
+
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        taskDateAndTime.set(Calendar.MINUTE, minute);
+        taskDateAndTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
+        updateDateAndTime();
+    }
 }

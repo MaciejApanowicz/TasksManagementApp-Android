@@ -1,9 +1,9 @@
 package pl.maciejapanowicz.tasksmanager.fragment;
 
 import android.app.Dialog;
+import android.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 
 import java.util.Calendar;
 
@@ -15,7 +15,7 @@ public class TimePickerFragment extends DialogFragment {
         TimePickerFragment timePickerFragment = new TimePickerFragment();
 
         Bundle data = new Bundle();
-        data.putInt(HOURS, time.get(Calendar.HOUR));
+        data.putInt(HOURS, time.get(Calendar.HOUR_OF_DAY));
         data.putInt(MINS, time.get(Calendar.MINUTE));
         timePickerFragment.setArguments(data);
         return timePickerFragment;
