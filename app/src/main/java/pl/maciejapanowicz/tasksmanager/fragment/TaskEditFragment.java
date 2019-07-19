@@ -87,6 +87,21 @@ public class TaskEditFragment extends Fragment {
                 .load(TaskListAdapter.downloadPicturesForThisTask(taskIdNumber))
                 .into(imageView);
         updateDateAndTime();
+
+        taskDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: 19.07.2019 show a user the Date Picker, plus return the value that the user picks.
+            }
+        });
+
+        taskTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: 19.07.2019 show a user the Time Picker, plus return the value that the user picks.
+            }
+        });
+
         return view;
     }
 
@@ -112,7 +127,6 @@ public class TaskEditFragment extends Fragment {
                 ((OnTaskEditFinished) getActivity()).finishEditingTask();
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
