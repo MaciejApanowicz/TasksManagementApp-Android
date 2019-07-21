@@ -1,6 +1,7 @@
 package pl.maciejapanowicz.tasksmanager.fragment;
 
 import android.app.DatePickerDialog;
+import android.app.DialogFragment;
 import android.app.FragmentTransaction;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
@@ -127,6 +128,7 @@ public class TaskEditFragment extends Fragment implements DatePickerDialog.OnDat
             case MENU_SAVE:
                 // TODO: 30.06.2019 create a saving method
                 ((OnTaskEditFinished) getActivity()).finishEditingTask();
+                showSaveAlertDialog();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -152,6 +154,13 @@ public class TaskEditFragment extends Fragment implements DatePickerDialog.OnDat
         TimePickerFragment timePickerFragment = TimePickerFragment.newInstance(taskDateAndTime);
         timePickerFragment.show(fragmentTransaction, "timePicker");
     }
+
+    private void showSaveAlertDialog() {
+    FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+    DialogFragment dialogFragment = new AlertDialogFragment();
+    dialogFragment.show(fragmentTransaction, "alertDialog");
+    }
+
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
