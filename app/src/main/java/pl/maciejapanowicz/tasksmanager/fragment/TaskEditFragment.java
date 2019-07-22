@@ -27,8 +27,6 @@ import java.util.Calendar;
 import pl.maciejapanowicz.tasksmanager.activity.R;
 import pl.maciejapanowicz.tasksmanager.activity.TaskEditActivity;
 import pl.maciejapanowicz.tasksmanager.adapter.TaskListAdapter;
-import pl.maciejapanowicz.tasksmanager.interfaces.OnTaskEditFinished;
-
 
 public class TaskEditFragment extends Fragment implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
@@ -126,9 +124,8 @@ public class TaskEditFragment extends Fragment implements DatePickerDialog.OnDat
     public boolean onOptionsItemSelected (MenuItem item){
         switch (item.getItemId()){
             case MENU_SAVE:
-                // TODO: 30.06.2019 create a saving method
-                ((OnTaskEditFinished) getActivity()).finishEditingTask();
                 showSaveAlertDialog();
+                // TODO: 30.06.2019 create a saving method
             return true;
         }
         return super.onOptionsItemSelected(item);

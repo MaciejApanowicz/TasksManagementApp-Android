@@ -17,7 +17,8 @@ public class AlertDialogFragment extends DialogFragment {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // save the task
+                        // todo : make saving task possible
+                        getActivity().finish();
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
